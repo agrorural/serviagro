@@ -1,0 +1,8 @@
+header{
+	&.banner{
+		.brand{
+			@include img-replace( 225px, 105px ); 
+			background-image: url('../images/logo--sm.jpg');
+		}
+	}
+}
