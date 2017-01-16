@@ -1,8 +1,11 @@
 header{
 	&.banner{
+		background-color: $green;
+		padding-top: 60px;
+		padding-bottom: 20px;
 		.brand{
-			@include img-replace( 225px, 105px ); 
-			background-image: url('../images/logo--sm.jpg');
+			@include img-replace( 265px, 115px ); 
+			background-image: url('../images/logo--sm--white.png');
 		}
 	}
 }
