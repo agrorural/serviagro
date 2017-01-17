@@ -1,0 +1,15 @@
+nav{
+	&.nav-primary{
+		margin-top: 45px;
+		.mega-menu-wrap{
+			background-color: transparent;
+			ul{
+				li{
+					a{
+						color: #FFF;
+					}
+				}
+			}
+		}
+	}
+}

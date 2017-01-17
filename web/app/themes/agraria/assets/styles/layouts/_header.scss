@@ -6,6 +6,7 @@ header{
 		.brand{
 			@include img-replace( 265px, 115px ); 
 			background-image: url('../images/logo--sm--white.png');
+			margin: 0 auto;
 		}
 	}
 }
