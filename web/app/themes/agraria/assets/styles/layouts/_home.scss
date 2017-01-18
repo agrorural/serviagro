@@ -1,0 +1,72 @@
+.home{
+	section{
+		padding-top: 75px;
+		padding-bottom: 35px;
+		.scroll{
+			text-align: center;
+			margin-top: 55px;
+		}
+		.section-container{
+			@extend .container;
+			.page-header{
+				margin-top: 0;
+				margin-bottom: 55px;
+				text-align: center;
+				border-bottom: 1px solid transparent;
+				h2{
+					display: inline-block;
+					@include font-size(24);
+					text-transform: uppercase;
+					padding: 0;
+					margin: 0;
+					&:after{
+						content: '';
+					    display: block;
+					    width: 40px;
+					    height: 2px;
+					    margin: .5em auto 0;
+					    background-color: $gray-light;
+					}
+				}
+			}
+			.items{
+				@include make-row();
+				.item{
+					text-align: center;
+					
+				}
+			}
+		}
+
+		&.calling{
+			background-color: $gray-lighter;
+			.section-container{
+				.items{
+					.item{
+						@include make-col(3);
+					}
+				}
+			}
+		}
+		&.components{
+			background-color: $gray-light;
+			.section-container{
+				.items{
+					.item{
+						@include make-col(6);
+					}
+				}
+			}
+		}
+		&.organizations{
+			background-color: white;
+			.section-container{
+				.items{
+					.item{
+						@include make-col(2);
+					}
+				}
+			}
+		}
+	}
+}

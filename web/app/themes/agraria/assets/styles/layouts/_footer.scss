@@ -1,0 +1,10 @@
+.content-info{
+	background-color: $gray-dark;
+	.container{
+		.widget{
+			h3, .textwidget{
+				color: $gray-lighter;
+			}
+		}
+	}
+}
