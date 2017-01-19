@@ -1,7 +1,7 @@
 .home{
 	section{
-		padding-top: 75px;
-		padding-bottom: 35px;
+		padding-top: 135px;
+		padding-bottom: 55px;
 		.scroll{
 			text-align: center;
 			margin-top: 55px;
@@ -43,16 +43,16 @@
 			.section-container{
 				.items{
 					.item{
-						@include make-col(3);
-						@media (max-width: 33.9em){
-							@include make-col(12);
+						@include make-col(12);
+						@media (min-width: 32.1em){
+							@include make-col(3);
 						}
 					}
 				}
 			}
 		}
 		&.components{
-			background-color: $gray-light;
+			background-color: $green;
 			.section-container{
 				.items{
 					.item{

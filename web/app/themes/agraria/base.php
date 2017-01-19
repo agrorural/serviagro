@@ -18,6 +18,11 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
+    <section class="masshead">
+      <div class="container">
+        <?php get_template_part('templates/page', 'header'); ?>
+      </div>
+    </section>
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main">
