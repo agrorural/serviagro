@@ -44,6 +44,9 @@
 				.items{
 					.item{
 						@include make-col(3);
+						@media (max-width: 33.9em){
+							@include make-col(12);
+						}
 					}
 				}
 			}

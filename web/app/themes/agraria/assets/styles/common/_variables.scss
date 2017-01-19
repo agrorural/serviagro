@@ -3,10 +3,11 @@ $enable-flex:           true;
 $main-sm-columns:       12;
 $sidebar-sm-columns:    4;
 
-// Colors
-$brand-primary:         #27ae60;
-
 // Custom colors
-$green:					#00A954;
-$green-light:			#77C692;	
+$white:					#FFFFFF;
+$green:					#8CC43D;
+$green-light:			#8CC43D;	
+$blue:					#005CA1;
 
+// Colors
+$brand-primary:         $blue;

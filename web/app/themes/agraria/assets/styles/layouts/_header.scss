@@ -1,17 +1,17 @@
 header{
 	&.banner{
-		background-color: $green;
-		padding-top: 60px;
-		padding-bottom: 20px;
+		background: $white url('../images/header__bg.png') no-repeat;
+		padding-top: 215px;
+    	padding-bottom: 30px;
 		.brand{
-			@include img-replace( 265px, 115px ); 
-			background-image: url('../images/logo--sm--white.png');
+			@include img-replace( 445px, 140px ); 
+			background-image: url('../images/serviagro__logo.jpg');
 			margin: 0 auto;
 		}
 	}
 	&.pimary-nav{
 		
-			background-color: #222;
+			background-color: $blue;
 		
 	}
 }
