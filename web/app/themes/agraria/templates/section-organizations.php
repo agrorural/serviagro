@@ -2,6 +2,67 @@
 		<div class="page-header">
 			<h2>Instituciones</h2>
 		</div>
+		
+			<?php
+				$args = array( 'hide_empty=0' ); 
+				$terms = get_terms( 'organizacion', $args );
+
+				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+				    echo '<div class="items">';
+				    foreach ( $terms as $term ) {
+				        echo '<div class="item card">';
+				        	echo '<div class="item-container">';
+				        		$orgImg = get_field('orgImg', $term->taxonomy . '_' . $term->term_id);
+				        		 //var_dump($orgImg['url']);
+				        		if($orgImg){
+				        			echo '<img class="card-img-top" src="' . $orgImg['url'] . '" alt="Card image cap">';
+				        		}
+					        	//echo $term->name;
+						        //echo '<pre>';
+								//var_dump($term);
+								//echo '</pre>';
+								echo '<div class="card-block">';
+									echo '<h4 class="card-title">' . $term->name . '</h4>';
+							        $posts_array = get_posts(
+									    array(
+									        'posts_per_page' => 3,
+									        'post_type' => 'servicio',
+									        'tax_query' => array(
+									            array(
+									                'taxonomy' => ''.$term->taxonomy,
+									                'field' => 'term_id',
+									                'terms' => $term->term_id,
+									            )
+									        )
+									    )
+									);
+
+
+								//var_dump($posts_array);
+
+									if ( $posts_array ) {
+										echo '<ul class="list-unstyled">';
+										    foreach ( $posts_array as $post ) :
+										        setup_postdata( $post ); ?>
+										        <li><small><?php the_title(); ?></small></li>
+										    <?php
+										    endforeach; 
+										    wp_reset_postdata();
+									    echo '</ul>';
+									}
+								echo '</div>';
+							echo '</div>';
+						echo '</div>';
+				    }
+				    echo '</div>';
+				}
+
+				//echo '<pre>';
+				//var_dump($terms);
+				//echo '</pre>';
+
+			?>
+
 	<div class="items">
 		<div class="item">
 			<div class="item-container">

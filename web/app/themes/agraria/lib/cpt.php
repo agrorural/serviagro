@@ -49,3 +49,37 @@ function create_my_post_types() {
 
 	register_post_type('servicio', $args_servicio);
 }
+
+add_action( 'init', 'create_my_taxonomies', 0 );
+function create_my_taxonomies() {
+	// Agregar Nuevo taxonomy, make it hierarchical (like categories)
+	$labels_servicio_organizacion = array(
+		'name'              => _x( 'Organizaciones', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Organización', 'taxonomy singular name' ),
+		'search_items'      => __( 'Buscar organizaciones' ),
+		'all_items'         => __( 'Todas los  organizaciones' ),
+		'parent_item'       => __( 'Organización Padre' ),
+		'parent_item_colon' => __( 'Organización Padre:' ),
+		'edit_item'         => __( 'Editar organización' ),
+		'update_item'       => __( 'Actualizar organización' ),
+		'add_new_item'      => __( 'Agregar Nueva organización' ),
+		'new_item_name'     => __( 'Nombre de Nueva organización' ),
+		'menu_name'         => __( 'Organizaciones' )
+	);
+	$args_servicio_organizacion = array(
+		'public' 			=> true,
+		'hierarchical'      => true,
+		'labels'            => $labels_servicio_organizacion,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'capabilities'		=> array(
+			'manage_terms' => 'manage_organizacion',
+			'edit_terms' => 'edit_organizacion',
+			'delete_terms' => 'delete_organizacion',
+			'assign_terms' => 'assign_organizacion'
+		)
+	);
+
+		register_taxonomy( 'organizacion', 'servicio', $args_servicio_organizacion );
+}
