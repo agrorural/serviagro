@@ -1,5 +1,5 @@
 .home{
-	section{
+	.section{
 		padding-top: 115px;
 		padding-bottom: 55px;
 		.scroll{
@@ -41,7 +41,7 @@
 		}
 
 		&.calling{
-			background-color: $gray-lighter;
+			background-color: $blue-light;
 			.section-container{
 				.items{
 					.item{

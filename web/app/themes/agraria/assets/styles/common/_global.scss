@@ -48,14 +48,19 @@ h1, h2, h3, h4, h5, h6{
 			color: $blue;
 			padding-top: 45px;
 			padding-bottom: 45px;
+			margin-bottom: 0;
 		}
 	}
 }
 
 .wrap{
 	.content{
-		padding-top: 40px;
+
 		main{
+			padding: 2rem 2rem 1rem;
+			h1, h2, h3{
+				color: $green;
+			}
 			p{
 				text-align: justify;
 			}

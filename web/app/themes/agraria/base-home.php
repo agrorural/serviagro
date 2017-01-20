@@ -18,19 +18,19 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
-    <section id="s1" class="calling">
+    <section id="s1" class="section calling">
       <?php get_template_part('templates/section', 'calling'); ?>
       <div class="scroll">
         <a class="scroll-to" href="#s2"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
       </div>
     </section>
-    <section id="s2" class="components">
+    <section id="s2" class="section components">
       <?php get_template_part('templates/section', 'components'); ?>
       <div class="scroll">
         <a class="scroll-to" href="#s3"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
       </div>
     </section>
-    <section id="s3" class="organizations">
+    <section id="s3" class="section organizations">
       <?php get_template_part('templates/section', 'organizations'); ?>
       <div class="scroll">
         <a class="scroll-to" href="#s4"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
