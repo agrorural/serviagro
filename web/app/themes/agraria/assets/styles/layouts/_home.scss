@@ -168,4 +168,15 @@
 			}
 		}
 	}
+	.popover{
+		.popover-content{
+			padding: 0;
+			ul{
+				@extend .list-group;
+				li{
+					@extend .list-group-item;
+				}
+			}
+		}
+	}
 }

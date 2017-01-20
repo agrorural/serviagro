@@ -8,7 +8,7 @@
 					<?php /*<strong><?php bloginfo('name'); ?></strong><br> */?>
 					Av. La Universidad Nº 200<br>
 					La Molina, Lima 12, PE<br>
-					<abbr title="Teléfono">T:</abbr> <a href="tel:+511-209-8800">(511) 209-8800</a> [axos. 4332, 4249, 4234]<br><br>
+					<abbr title="Teléfono">T:</abbr> <a href="tel:+511-209-8800">(511) 209-8800</a> anexos. 4332, 4249, 4234<br><br>
 					<a href="mailto:#">contacto@serviagro.com</a>
 				</address>
 		    </div>

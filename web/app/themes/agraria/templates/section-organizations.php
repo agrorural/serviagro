@@ -56,7 +56,7 @@
 					      						} 
 					      				?>
 					      						</ul>
-					      						<a href='<?php echo $term_link; ?>' class='card-link'>Más servicios</a>
+					      						<div class='card-block'><a href='<?php echo $term_link; ?>' class='card-link'>Más servicios</a></div>
 				      				">
 				        				<img class="" src="<?php echo $orgImg['url']; ?>" alt="Card image cap">
 				        			</a>
