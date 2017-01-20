@@ -137,7 +137,7 @@
 			.section-container{
 				.items{
 					.item{
-						@include make-col(6);
+						@include make-col(12);
 						@media (min-width: 32.1em){
 							@include make-col(4);
 						}

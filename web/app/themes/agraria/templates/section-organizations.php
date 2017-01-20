@@ -13,38 +13,24 @@
 				    	$term_link = get_term_link( $term );
 				        echo '<div class="item">';
 				        	echo '<div class="item-container">';
-				        		$orgImg = get_field('orgImg', $term->taxonomy . '_' . $term->term_id);
-				        		 //var_dump($orgImg['url']);
-				        		if($orgImg){
-				        			echo '<img class="" src="' . $orgImg['url'] . '" alt="Card image cap">';
-				        		}
-					        	//echo $term->name;
-						        //echo '<pre>';
-								//var_dump($term);
-								//echo '</pre>';
-
-									//echo '<h4>' . $term->name . '</h4>';
-				        			echo '<div class="item-caption">';
-				        				echo '<p>' . $term->description . '</p>';
-				        			echo '</div>';
-							        $posts_array = get_posts(
-									    array(
-									        'posts_per_page' => 3,
-									        'post_type' => 'servicio',
-									        'tax_query' => array(
-									            array(
-									                'taxonomy' => ''.$term->taxonomy,
-									                'field' => 'term_id',
-									                'terms' => $term->term_id,
-									            )
-									        )
-									    )
-									);
+					        	 $posts_array = get_posts(
+										    array(
+										        'posts_per_page' => 3,
+										        'post_type' => 'servicio',
+										        'tax_query' => array(
+										            array(
+										                'taxonomy' => ''.$term->taxonomy,
+										                'field' => 'term_id',
+										                'terms' => $term->term_id,
+										            )
+										        )
+										    )
+										);
 
 
-								//var_dump($posts_array);
+									//var_dump($posts_array);
 
-									if ( $posts_array ) {
+									/*if ( $posts_array ) {
 										echo '<ul class="list-group list-group-flush">';
 										    foreach ( $posts_array as $post ) :
 										        setup_postdata( $post ); ?>
@@ -53,11 +39,37 @@
 										    endforeach; 
 										    wp_reset_postdata();
 									    echo '</ul>';
-									}
+									}*/
 
-									echo '<div class="card-block">';
-									    echo '<a href=" ' . $term_link . '" class="card-link">Más servicios</a>';
-									  echo '</div>';
+				        		$orgImg = get_field('orgImg', $term->taxonomy . '_' . $term->term_id);
+				        		 //var_dump($orgImg['url']);
+				        		if($orgImg){ ?>
+				      				<a type="button" class="" data-toggle="popover" title="Servicios" data-content="
+				      					<?php if ( $posts_array ) { ?>
+				      							<ul class='list-unstyled'>
+				      							<?php foreach ( $posts_array as $post ) :
+										        setup_postdata( $post ); ?>
+											        <li><?php the_title(); ?></li>
+											    <?php
+											    endforeach; 
+											    wp_reset_postdata();
+					      						} 
+					      				?>
+					      						</ul>
+					      						<a href='<?php echo $term_link; ?>' class='card-link'>Más servicios</a>
+				      				">
+				        				<img class="" src="<?php echo $orgImg['url']; ?>" alt="Card image cap">
+				        			</a>
+				        		<?php }
+					        	//echo $term->name;
+						        //echo '<pre>';
+								//var_dump($term);
+								//echo '</pre>';
+
+									//echo '<h4>' . $term->name . '</h4>';
+				        			//echo '<div class="item-caption">';
+				        			//	echo '<p>' . $term->description . '</p>';
+				        			//echo '</div>';
 
 							echo '</div>';
 						echo '</div>';

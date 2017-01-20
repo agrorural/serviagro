@@ -20,7 +20,14 @@ use Roots\Sage\Wrapper;
     ?>
     <section class="masshead">
       <div class="container">
-        <?php get_template_part('templates/page', 'header'); ?>
+        <?php 
+        //var_dump(get_post_type());
+      if(get_post_type() != 'post' && get_post_type() != 'page'){
+            get_template_part('templates/page', 'header-'.get_post_type()); 
+      }else{
+        get_template_part('templates/page', 'header'); 
+      }
+        ?>
       </div>
     </section>
     <div class="wrap container" role="document">

@@ -2,32 +2,48 @@
 	background-color: $gray-dark;
 	padding: 50px 0 15px;
 	.container{
-		.widget{
-			.brand{
-				@include img-replace( 245px, 30px ); 
-				background-image: url('../images/logo--footer.png');
+		.wrap{
+			@include make-row();
+			.widget{
+				@include make-col(12);
 				@media (min-width: 32.1em){
+					@include make-col(6);
+				}
+				.brand{
 					@include img-replace( 245px, 30px ); 
 					background-image: url('../images/logo--footer.png');
-				}
-			}
-			h3, .textwidget{
-				color: $gray-lighter;
-			}
-			.textwidget{
-				address{
-					font-family: 'montserratlight', Arial, sans-serif; 
-					margin-top: 1rem;
-					font-size: .75rem;
-					a{
-						color: $white;
-						&:hover{
-							color: $gray-light;
-							text-decoration: none;
+					@media (min-width: 32.1em){
+						@include img-replace( 245px, 30px ); 
+						background-image: url('../images/logo--footer.png');
+					}
+					&.minagri{
+						float: right;
+						@include img-replace( 290px, 55px ); 
+						background-image: url('../images/logo__minagri.jpg');
+						@media (min-width: 32.1em){
+							@include img-replace( 290px, 55px ); 
+							background-image: url('../images/logo__minagri.jpg');
 						}
 					}
 				}
-			} 
+				h3, .textwidget{
+					color: $gray-lighter;
+				}
+				.textwidget{
+					address{
+						font-family: 'montserratlight', Arial, sans-serif; 
+						margin-top: 1rem;
+						font-size: .75rem;
+						a{
+							color: $white;
+							&:hover{
+								color: $gray-light;
+								text-decoration: none;
+							}
+						}
+					}
+				} 
+			}
 		}
 	}
 }

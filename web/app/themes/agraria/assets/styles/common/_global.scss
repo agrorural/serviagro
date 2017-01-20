@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .masshead{
+	@extend .jumbotron;
 	background-color: $blue-light;
 	.page-header{
 		text-align: center;
@@ -47,8 +48,6 @@ h1, h2, h3, h4, h5, h6{
 			font-family: 'montserratlight', Arial, sans-serif; 
 			font-size: 4rem;
 			color: $gray-dark;
-			padding-top: 45px;
-			padding-bottom: 45px;
 			margin-bottom: 0;
 		}
 	}
