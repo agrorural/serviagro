@@ -44,8 +44,9 @@ h1, h2, h3, h4, h5, h6{
 	.page-header{
 		text-align: center;
 		h1{
+			font-family: 'montserratlight', Arial, sans-serif; 
 			font-size: 4rem;
-			color: $blue;
+			color: $gray-dark;
 			padding-top: 45px;
 			padding-bottom: 45px;
 			margin-bottom: 0;
