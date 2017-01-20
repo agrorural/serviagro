@@ -1,6 +1,6 @@
 .home{
 	section{
-		padding-top: 135px;
+		padding-top: 115px;
 		padding-bottom: 55px;
 		.scroll{
 			text-align: center;
@@ -32,8 +32,10 @@
 			.items{
 				@include make-row();
 				.item{
-					text-align: center;
-					
+					padding: .75rem;
+					.item-container{
+						@extend .card; 
+					}
 				}
 			}
 		}
@@ -43,9 +45,41 @@
 			.section-container{
 				.items{
 					.item{
-						@include make-col(12);
+						@include make-col(6);
 						@media (min-width: 32.1em){
 							@include make-col(3);
+						}
+						.item-container{
+							background-color: $gray-lightest;
+							img{
+								@extend .card-img-top;
+								width: 100%;
+							}
+							.item-caption{
+								@extend .card-block;
+								background-color: $white;
+								h4{
+									@extend .card-title;
+								}
+								p{
+									@extend .card-text;
+									color: $gray;
+								}
+							}
+						}
+						&:hover{
+							.item-container{
+								background-color: $white;
+								a{
+									text-decoration: none;
+									.item-caption{
+										background-color: $green;
+										h4, p{
+											color: $white;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -56,7 +90,44 @@
 			.section-container{
 				.items{
 					.item{
-						@include make-col(6);
+						@include make-col(12);
+						@media (min-width: 32.1em){
+							@include make-col(6);
+						}
+						.item-container{
+							background-color: transparent;
+							border:5px solid $white;
+							img{
+								@extend .card-img-top;
+								width: 100%;
+							}
+							.item-caption{
+								@extend .card-block;
+								background-color: transparent;
+								h4{
+									@extend .card-title;
+									color: $white;
+								}
+								p{
+									@extend .card-text;
+									color: $gray;
+								}
+							}
+						}
+						&:hover{
+							.item-container{
+								background-color: $white;
+								border:5px solid $white;
+								a{
+									text-decoration: none;
+									.item-caption{
+										h4, p{
+											color: $green;
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -66,7 +137,32 @@
 			.section-container{
 				.items{
 					.item{
-						@include make-col(3);
+						@include make-col(6);
+						@media (min-width: 32.1em){
+							@include make-col(4);
+						}
+						.item-container{
+							background-color: transparent;
+							text-align: center;
+							img{
+								@extend .card-img-top;
+							}
+							.item-caption{
+								@extend .card-block;
+								background-color: transparent;
+								h4{
+									@extend .card-title;
+									color: $white;
+								}
+								p{
+									@extend .card-text;
+									color: $gray;
+								}
+							}
+							.list-group{
+								text-align: left;
+							}
+						}
 					}
 				}
 			}
