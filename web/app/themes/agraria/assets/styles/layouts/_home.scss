@@ -137,15 +137,23 @@
 			.section-container{
 				.items{
 					.item{
+						border: 1px solid $gray-lighter;
 						@include make-col(12);
 						@media (min-width: 32.1em){
-							@include make-col(4);
+							@include make-col(3);
 						}
 						.item-container{
 							background-color: transparent;
 							text-align: center;
+							border: 0 none;
+							margin-bottom: 0;
 							img{
 								@extend .card-img-top;
+								@extend .img-fluid;
+								filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+								filter: gray; /* IE6-9 */
+								-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+								
 							}
 							.item-caption{
 								@extend .card-block;
@@ -161,6 +169,15 @@
 							}
 							.list-group{
 								text-align: left;
+							}
+						}
+						&:hover{
+							border: 1px solid $gray-light;
+							.item-container{
+								img{
+									 filter: none;
+                                     -webkit-filter: grayscale(0%);
+								}
 							}
 						}
 					}

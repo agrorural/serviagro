@@ -58,9 +58,27 @@
 					      						</ul>
 					      						<div class='card-block'><a href='<?php echo $term_link; ?>' class='card-link'>Más servicios</a></div>
 				      				">
-				        				<img class="" src="<?php echo $orgImg['url']; ?>" alt="Card image cap">
+				        				<img class="img-fluid" src="<?php echo $orgImg['url']; ?>" alt="Card image cap">
 				        			</a>
-				        		<?php }
+				        		<?php } else{ ?>
+				        			<a type="button" class="" data-toggle="popover" title="Servicios" data-content="
+				      					<?php if ( $posts_array ) { ?>
+				      							<ul class='list-unstyled'>
+				      							<?php foreach ( $posts_array as $post ) :
+										        setup_postdata( $post ); ?>
+											        <li><?php the_title(); ?></li>
+											    <?php
+											    endforeach; 
+											    wp_reset_postdata();
+					      						} 
+					      				?>
+					      						</ul>
+					      						<div class='card-block'><a href='<?php echo $term_link; ?>' class='card-link'>Más servicios</a></div>
+				      				">
+				        				<img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/dist/images/inst__logo__default.jpg" alt="Card image cap">
+				        			</a>
+
+				        		<?php } 
 					        	//echo $term->name;
 						        //echo '<pre>';
 								//var_dump($term);
