@@ -56,14 +56,25 @@
 								width: 100%;
 							}
 							.item-caption{
+								text-align: center;
 								@extend .card-block;
 								background-color: $white;
 								h4{
 									@extend .card-title;
+									font-size: 1rem;
 								}
 								p{
 									@extend .card-text;
 									color: $gray;
+									display: none;
+								}
+								@media (min-width: 32.1em){
+									h4{
+										font-size: 1.5rem;
+									}
+									p{
+										display: block;
+									}
 								}
 							}
 						}
