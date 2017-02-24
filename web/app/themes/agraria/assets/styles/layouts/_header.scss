@@ -1,21 +1,26 @@
 header{
-	&.banner{
-		background: $white url('../images/header__bg--2.jpg') no-repeat;
-		padding-top: 275px;
-    	padding-bottom: 50px;
+	&.branded{
+		/*background: $white url('../images/home__masshead__bg.png') no-repeat center center local; */
 		.brand{
-			@include img-replace( 185px, 130px ); 
+			@include img-replace( 160px, 100px ); 
 			background-image: url('../images/logo--xs.png');
 			@media (min-width: 32.1em){
-				@include img-replace( 445px, 85px ); 
-				background-image: url('../images/logo--sm.png');
+				@include img-replace( 650px, 182px ); 
+				background-image: url('../images/logo--lg.png');
 			}
+			position: absolute;
+			top: 10%;
+			@media (min-width: 32.1em){
+				top: 45%;
+			}
+			left: 0;
+			right: 0;
 			margin: 0 auto;
 		}
 	}
 	&.pimary-nav{
 		
-			background-color: $blue;
+			background-color: $white;
 		
 	}
 }

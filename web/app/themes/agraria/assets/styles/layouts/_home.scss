@@ -7,26 +7,15 @@
 			margin-top: 55px;
 		}
 		.section-container{
-			@extend .container;
 			.page-header{
 				margin-top: 0;
 				margin-bottom: 55px;
-				text-align: center;
 				border-bottom: 1px solid transparent;
 				h2{
 					display: inline-block;
-					@include font-size(24);
-					text-transform: uppercase;
+					@include font-size(32);
 					padding: 0;
 					margin: 0;
-					&:after{
-						content: '';
-					    display: block;
-					    width: 40px;
-					    height: 2px;
-					    margin: .5em auto 0;
-					    background-color: $gray-light;
-					}
 				}
 			}
 			.items{
@@ -34,61 +23,119 @@
 				.item{
 					padding: .75rem;
 					.item-container{
-						@extend .card; 
+						.item-caption{							
+							h3{
+								@include font-size(14);
+							}
+						}
 					}
 				}
 			}
 		}
 
 		&.calling{
-			background-color: $blue-light;
+			background-color: $white;
 			.section-container{
+				@extend .container;
+				@media (min-width: 32.1em){
+					width: 45%;
+				}
+				text-align: center;
+				.page-header{
+					h2{
+						color: $blue;
+					}
+				}
+				p{
+					color: $gray-text-light;
+				}
+			}
+		}
+		&.workflow{
+			background-color: $blue;
+			.section-container{
+				text-align: center;
+				img{
+					margin: 0 auto;
+				}
+			}
+		}
+		&.goal{
+			padding-top: 0;
+			padding-bottom: 0;
+			background-color: $green;
+			.section-container{
+				@extend .container-fluid;
+				.page-header{
+					color: $white;
+					margin-bottom: 1.5rem;
+				}
 				.items{
 					.item{
-						@include make-col(6);
+						@include make-col(12);
+						&.goal__img{
+							padding: 0;
+						}
+						&.goal__text{
+							padding: 4rem 4rem 1rem;
+						}
 						@media (min-width: 32.1em){
-							@include make-col(3);
+							&.goal__img{
+								@include make-col(5);
+							}
+							&.goal__text{
+								@include make-col(7);
+							}
 						}
 						.item-container{
-							background-color: $gray-lightest;
-							img{
-								@extend .card-img-top;
-								width: 100%;
-							}
+							img{}
 							.item-caption{
-								text-align: center;
-								@extend .card-block;
-								background-color: $white;
-								h4{
-									@extend .card-title;
-									font-size: 1rem;
+								color: $white;
+								h3{
+									color: $green-accent;
+									text-transform: uppercase;
 								}
 								p{
-									@extend .card-text;
-									color: $gray;
-									display: none;
-								}
-								@media (min-width: 32.1em){
-									h4{
-										font-size: 1.5rem;
-									}
-									p{
-										display: block;
-									}
+									color: $white;
 								}
 							}
 						}
-						&:hover{
-							.item-container{
-								background-color: $white;
-								a{
-									text-decoration: none;
-									.item-caption{
-										background-color: $green;
-										h4, p{
-											color: $white;
-										}
-									}
+					}
+				}
+			}
+		}
+		&.scope{
+			padding-top: 0;
+			padding-bottom: 0;
+			background-color: $white;
+			.section-container{
+				@extend .container-fluid;
+				.page-header{
+					color: $blue;
+				}
+				.items{
+					.item{
+						@include make-col(12);
+						&.scope__img{
+							padding: 0;
+						}
+						&.scope__text{
+							padding: 4rem 4rem 0.75rem;
+						}
+						@media (min-width: 32.1em){
+							&.scope__img{
+								@include make-col(3);
+							}
+							&.scope__text{
+								@include make-col(9); 
+							}
+						}
+						.item-container{
+							img{}
+							.item-caption{
+								color: $gray-text-light;
+								p{
+									color: $gray-text-light;
 								}
 							}
 						}
@@ -97,49 +144,34 @@
 			}
 		}
 		&.components{
-			background: $green url('../images/componentes__bg.jpg') no-repeat;
-			-webkit-background-size: cover;
-			  -moz-background-size: cover;
-			  -o-background-size: cover;
-			  background-size: cover;
+			padding-top: 0;
+			padding-bottom: 0;
+			background-color: $blue;
 			.section-container{
+			@extend .container-fluid;
+			text-align: center;
+			.page-header{
+				color: $white;
+			}
 				.items{
 					.item{
 						@include make-col(12);
-						@media (min-width: 32.1em){
-							@include make-col(6);
+						&.components__img{
+							padding: 0;
+						}
+						&.components__text{
+							@media (min-width: 32.1em){
+								padding: 4rem 35rem 3rem;
+							}
 						}
 						.item-container{
-							background-color: transparent;
-							border: 5px solid $green;
-							img{
-								@extend .card-img-top;
-								width: 100%;
-							}
+							img{}
 							.item-caption{
-								@extend .card-block;
-								background-color: transparent;
 								h4{
-									@extend .card-title;
 									color: $blue;
 								}
 								p{
-									@extend .card-text;
 									color: $gray;
-								}
-							}
-						}
-						&:hover{
-							.item-container{
-								background-color: $green;
-								border:5px solid $green;
-								a{
-									text-decoration: none;
-									.item-caption{
-										p{
-											color: $gray-dark;
-										}
-									}
 								}
 							}
 						}
@@ -148,17 +180,23 @@
 			}
 		}
 		&.organizations{
-			background-color: white;
+			background: transparent url('../images/instituciones__bg.jpg') repeat center center;
 			.section-container{
+			@extend .container;
+			text-align: center;
+				.page-header{
+					color: $white;
+				}
 				.items{
 					.item{
+						background-color: $white;
 						border: 1px solid $gray-lighter;
 						@include make-col(12);
 						@media (min-width: 32.1em){
 							@include make-col(3);
 						}
 						.item-container{
-							background-color: transparent;
+							background-color: $white;
 							text-align: center;
 							border: 0 none;
 							margin-bottom: 0;
@@ -187,7 +225,6 @@
 							}
 						}
 						&:hover{
-							border: 1px solid $gray-light;
 							.item-container{
 								img{
 									 filter: none;

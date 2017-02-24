@@ -1,8 +1,3 @@
-<header class="banner">
-  <div class="container">
-    <a class="brand" href="<?= esc_url(home_url('/')); ?>"><span><?php bloginfo('name'); ?></span></a>
-  </div>
-</header>
 <header class="pimary-nav">
   <div class="container">
     <nav class="nav-primary">
@@ -13,4 +8,8 @@
         ?>
       </nav>  
   </div>
+</header>
+<header class="banner branded">
+  <img src="<?php echo bloginfo('template_url'); ?>/dist/images/home__masshead_bg_2.png" class="img-fluid" />
+  <a class="brand" href="<?= esc_url(home_url('/')); ?>"><span><?php bloginfo('name'); ?></span></a>
 </header>

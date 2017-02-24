@@ -24,18 +24,27 @@ use Roots\Sage\Wrapper;
         <a class="scroll-to" href="#s2"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
       </div>
     </section>
-    <section id="s2" class="section components">
-      <?php get_template_part('templates/section', 'components'); ?>
+    <section id="s2" class="section workflow">
+      <?php get_template_part('templates/section', 'workflow'); ?>
       <div class="scroll">
         <a class="scroll-to" href="#s3"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
       </div>
     </section>
-    <section id="s3" class="section organizations">
-      <?php get_template_part('templates/section', 'organizations'); ?>
-      <div class="scroll">
-        <a class="scroll-to" href="#s4"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
-      </div>
+    <section id="s3" class="section goal">
+      <?php get_template_part('templates/section', 'goal'); ?>
     </section>
+    <section id="s4" class="section scope">
+      <?php get_template_part('templates/section', 'scope'); ?>
+    </section>
+    
+    <section id="sa" class="section components">
+      <?php get_template_part('templates/section', 'components'); ?>
+    </section>
+
+    <section id="sb" class="section organizations">
+      <?php get_template_part('templates/section', 'organizations'); ?>
+    </section>
+
     <?php
       do_action('get_footer');
       get_template_part('templates/footer');

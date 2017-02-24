@@ -1,3 +1,18 @@
+@mixin text-render(){
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin font-family($font: 'montserrat', $variation: 'regular'){
+  font-family: $font + $variation, sans-serif;
+  @include text-render();
+}
+
 @mixin img-replace( $width: 100%, $height: 100% ){
   display: block;
     width: $width;
