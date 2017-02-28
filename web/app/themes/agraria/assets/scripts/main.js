@@ -19,6 +19,31 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        //ScrollTo function
+        $('a[href^="#"]').on('click', function(event) {
+            var target = $(this.getAttribute('href'));
+            if( target.length ) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            }
+        });
+        
+        //Calcula el height para mostrar el menu fixed
+        $(window).scroll(function (event) {
+            var spotHeight = $('.pimary-nav').height();
+            var scroll = $(window).scrollTop();
+            console.log(spotHeight);
+            console.log(scroll);
+            if (scroll > spotHeight){
+              $('.pimary-nav').addClass('showing');
+            }else{
+              $('.pimary-nav').removeClass('showing');
+            }
+        });
+
+        //Popover
         $(function () {
           $('[data-toggle="popover"]').popover({
             html: true,

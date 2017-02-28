@@ -20,15 +20,9 @@ use Roots\Sage\Wrapper;
     ?>
     <section id="s1" class="section calling">
       <?php get_template_part('templates/section', 'calling'); ?>
-      <div class="scroll">
-        <a class="scroll-to" href="#s2"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
-      </div>
     </section>
     <section id="s2" class="section workflow">
       <?php get_template_part('templates/section', 'workflow'); ?>
-      <div class="scroll">
-        <a class="scroll-to" href="#s3"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
-      </div>
     </section>
     <section id="s3" class="section goal">
       <?php get_template_part('templates/section', 'goal'); ?>
