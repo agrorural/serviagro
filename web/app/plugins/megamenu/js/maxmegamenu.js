@@ -44,6 +44,11 @@
                 });
             }
 
+            // pause video widget videos
+            anchor.siblings(".mega-sub-menu").find('.widget_media_video video').each(function() {
+                this.player.pause();
+            });
+
             anchor.parent().removeClass("mega-toggle-on").triggerHandler("close_panel");
             plugin.addAnimatingClass(anchor.parent());
         };
@@ -77,7 +82,7 @@
         };
 
         plugin.isDesktopView = function() {
-            return Math.max(window.outerWidth, $(window).width()) >= plugin.settings.breakpoint; // account for scrollbars
+            return Math.max(window.outerWidth, $(window).width()) > plugin.settings.breakpoint; // account for scrollbars
         };
 
         plugin.isMobileView = function() {

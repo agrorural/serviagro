@@ -383,12 +383,12 @@ class Mega_Menu_Menu_Item_Manager {
                 $return .= '            <h4>' .  esc_html( $item['title'] ) . '</h4>';
                 $return .= '        </div>';
                 $return .= '    </div>';
-                $return .= '    <div class="widget-inner"></div>';
+                $return .= '    <div class="widget-inner widget-inside"></div>';
                 $return .= '</div>';
             }
 
         } else {
-            $return .= "<p class='no_widgets'>" .  __("No widgets found. Add a widget to this area using the Widget Selector (top right)") . "</p>";
+            $return .= "<p class='no_widgets'>" .  __("No widgets found. Add a widget to this area using the Widget Selector (top right)", "megamenu") . "</p>";
         }
 
         $return .= "</div>";

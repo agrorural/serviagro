@@ -216,6 +216,12 @@
 
                                 var selector = $(this);
 
+                                if (selector.val() == 'not_installed_image_widget') {
+                                    alert(megamenu.not_installed_image_widget);
+                                    selector.val('disabled');
+                                    return;
+                                }
+
                                 if (selector.val() != 'disabled') {
 
                                     start_saving();
@@ -301,6 +307,15 @@
                     $('#cboxLoadedContent').addClass('depth-' + panel.settings.menu_item_depth).append(header_container).append(tabs_container).append(content_container);
                     $('#cboxLoadedContent').css({'width': '100%', 'height': '100%', 'display':'block'});
                     $('#cboxLoadedContent').trigger('megamenu_content_loaded');
+
+                    // fix for WordPress 4.8 widgets when lightbox is opened, closed and reopened
+                    if (wp.textWidgets !== undefined) {
+                        wp.textWidgets.widgetControls = {}; // WordPress 4.8 Text Widget
+                    }
+
+                    if (wp.mediaWidgets !== undefined) {
+                        wp.mediaWidgets.widgetControls = {}; // WordPress 4.8 Media Widgets
+                    }
                 }
             });
 
@@ -437,7 +452,7 @@
                     }, function (response) {
 
                         var $response = $(response);
-                        var $form = $response.find('form');
+                        var $form = $response;
 
                         // bind delete button action
                         $(".delete", $form).on("click", function (e) {
@@ -553,6 +568,8 @@ jQuery(function ($) {
         var menu_id = $('input#menu').val();
         var title = menu_item.find('.menu-item-title').text();
 
+        menu_item.data('megamenu_has_button', 'true');
+
         // fix for Jupiter theme
         if ( ! title ) {
             title = menu_item.find('.item-title').text();
@@ -588,6 +605,24 @@ jQuery(function ($) {
             custom_css_classes.after(css_prefix);
         }
 
+    });
+
+    $('.megamenu_enabled #menu-to-edit li.menu-item').live('hover', function() {
+        var menu_item = $(this);
+
+        if (!menu_item.data('megamenu_has_button')) {
+
+            menu_item.data('megamenu_has_button', 'true');
+
+            var button = $("<span>").addClass("mm_launch mm_disabled")
+                                    .html(megamenu.launch_lightbox)
+                                    .on('click', function(e) {
+                                        e.preventDefault();
+                                        alert(megamenu.save_menu);
+                                    });
+
+            $('.item-title', menu_item).append(button);
+        }
     });
 
 

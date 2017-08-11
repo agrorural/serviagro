@@ -84,12 +84,15 @@ class Tribe__Events__Aggregator {
 		$section_name = 'tribe-aggregator-status';
 		$section_title = __( 'Event Aggregator System Status', 'the-events-calendar' );
 
-		$help->add_section( $section_name, $section_title, 60 );
-
 		ob_start();
 		include_once Tribe__Events__Main::instance()->pluginPath . 'src/admin-views/aggregator/status.php';
 		$status_html = ob_get_clean();
 
+		if ( empty( $status_html ) ) {
+			return;
+		}
+
+		$help->add_section( $section_name, $section_title, 60 );
 		$help->add_section_content( $section_name, $status_html );
 	}
 
@@ -251,7 +254,11 @@ class Tribe__Events__Aggregator {
 
 		$cache_group = $this->api( 'origins' )->cache_group;
 
-		return delete_transient( "{$cache_group}_origins" );
+		$purged = true;
+		$purged &= (bool) delete_transient( "{$cache_group}_origins" );
+		$purged &= (bool) delete_transient( "{$cache_group}_origin_limit" );
+
+		return $purged;
 	}
 
 	/**
@@ -456,7 +463,7 @@ class Tribe__Events__Aggregator {
 		$this->migrate = Tribe__Events__Aggregator__Migrate::instance();
 		$this->page = Tribe__Events__Aggregator__Page::instance();
 		$this->service = tribe( 'events-aggregator.service' );
-		$this->settings = Tribe__Events__Aggregator__Settings::instance();
+		$this->settings = tribe( 'events-aggregator.settings' );
 		$this->records = Tribe__Events__Aggregator__Records::instance();
 		$this->cron = Tribe__Events__Aggregator__Cron::instance();
 		$this->queue_processor = new Tribe__Events__Aggregator__Record__Queue_Processor;
@@ -473,6 +480,39 @@ class Tribe__Events__Aggregator {
 		$this->is_loaded = true;
 
 		return $this->is_loaded;
+	}
+
+	/**
+	 * Adds support for CSV's multiple mime types
+	 *
+	 * WordPress mime support requires a one to one mapping of an extension to a type, but CSV can come in multiple types
+	 *
+	 * @param  array $mimes supported mime types
+	 * @return array        mime types with expanded support
+	 */
+	public function add_csv_mimes( $info, $file, $filename, $mimes ) {
+		$wp_filetype = wp_check_filetype( $filename, $mimes );
+		$ext = $wp_filetype['ext'];
+		$type = $wp_filetype['type'];
+
+		if ( $ext !== 'csv' ) {
+			return $info;
+		}
+
+		if ( function_exists( 'finfo_file' ) ) {
+			// Use finfo_file if available to validate non-image files.
+			$finfo = finfo_open( FILEINFO_MIME_TYPE );
+			$real_mime = finfo_file( $finfo, $file );
+			finfo_close( $finfo );
+
+			// If the extension matches an alternate mime type, let's use it
+			if ( in_array( $real_mime, array( 'text/plain', 'text/csv', 'text/comma-separated-values' ) ) ) {
+				$info['ext'] = $ext;
+				$info['type'] = $type;
+			}
+		}
+
+		return $info;
 	}
 
 	/**
@@ -518,6 +558,8 @@ class Tribe__Events__Aggregator {
 		}
 
 		add_action( 'admin_init', array( $this, 'add_status_to_help' ) );
+
+		add_filter( 'wp_check_filetype_and_ext', array( $this, 'add_csv_mimes' ), 10, 4 );
 
 		return true;
 	}

@@ -51,6 +51,8 @@ class Mega_Menu_Nav_Menus {
         add_action( 'wp_ajax_mm_hide_nags', array($this, 'set_nag_transient') );
         add_filter( 'hidden_meta_boxes', array( $this, 'show_mega_menu_metabox' ) );
 
+        add_filter('siteorigin_panels_is_admin_page', array( $this, 'enable_site_origin_page_builder' ) );
+
         if ( function_exists( 'siteorigin_panels_admin_enqueue_scripts' ) ) {
             add_action( 'admin_print_scripts-nav-menus.php', array( $this, 'siteorigin_panels_admin_enqueue_scripts') );
         }
@@ -61,6 +63,21 @@ class Mega_Menu_Nav_Menus {
 
     }
 
+
+    /**
+     * Enqueue Site Origin Page Builder scripts on nav-menus page.
+     *
+     * @since 2.3.7
+     */
+    public function enable_site_origin_page_builder( $enabled ) {
+        $screen = get_current_screen();
+
+        if ($screen->base == 'nav-menus') {
+            return true;
+        }
+
+        return $enabled;
+    }
 
     /**
      * Enqueue Page Builder scripts (https://wordpress.org/plugins/siteorigin-panels/)
@@ -188,11 +205,13 @@ class Mega_Menu_Nav_Menus {
                 'get_started' => __("Use these settings to enable Max Mega Menu", "megamenu"),
                 'launch_lightbox' => __("Mega Menu", "megamenu"),
                 'is_disabled_error' => __("Please enable Max Mega Menu using the settings on the left of this page.", "megamenu"),
+                'save_menu' => __("Please save the menu structure to enable this option.", "megamenu"),
                 'saving' => __("Saving", "megamenu"),
                 'nonce' => wp_create_nonce('megamenu_edit'),
                 'nonce_check_failed' => __("Oops. Something went wrong. Please reload the page.", "megamenu"),
                 'css_prefix' => $prefix,
-                'css_prefix_message' => __("Custom CSS Classes will be prefixed with 'mega-'", "megamenu")
+                'css_prefix_message' => __("Custom CSS Classes will be prefixed with 'mega-'", "megamenu"),
+                'not_installed_image_widget' => __("Image Widget not installed. Please go to Plugins > Add New and search for 'Image Widget' to enable this option.", "megamenu")
             )
         );
 
@@ -259,6 +278,8 @@ class Mega_Menu_Nav_Menus {
                 }
             }
 
+            $submitted_settings = apply_filters("megamenu_submitted_settings_meta", $submitted_settings);
+
             if ( ! get_option( 'megamenu_settings' ) ) {
 
                 update_option( 'megamenu_settings', $submitted_settings );
@@ -308,6 +329,8 @@ class Mega_Menu_Nav_Menus {
         } else if ( ! count ( $tagged_menu_locations ) ) {
 
             echo "<p>" . __("Please assign this menu to a theme location to enable the Mega Menu settings.", "megamenu") . "</p>";
+
+            echo "<p>" . __("To assign this menu to a theme location, scroll to the bottom of this page and tag the menu to a 'Display location'.", "megamenu") . "</p>";
 
         } else { ?>
 
